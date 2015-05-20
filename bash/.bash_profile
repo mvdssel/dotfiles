@@ -3,7 +3,6 @@
 
 # Export Prompt {{{1 #
 # Prompt variables {{{2 #
-# Various variables you might want for your PS1 prompt instead
 User="\u"
 Hostname="\h"
 Time12h="\T"
@@ -15,7 +14,6 @@ Jobs="\j"
 
 # Prompt {{{2
 alias GitBranch="git branch | egrep '^\*'| sed 's|\*[[:space:]]\([^[[:space:]]]*\)[[:space:]]*|\1|'"
-# export PS1="\e]2;$PathFull\a"
 export PS1="\[$Purple\]"'$(if [ -f /Users/maartenvandessel/bin/prompt ]; then /Users/maartenvandessel/bin/prompt; fi)$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
     echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
@@ -33,11 +31,8 @@ fi)'
 # 2}}} #
 # 1}}} #
 # Export variables {{{1 #
-export _VIM='/usr/local/Cellar/macvim/7.4-73_1/MacVim.app/Contents/MacOS/Vim' # er staat een sticky-bit (t) op dit script
+export _VIM='/usr/local/Cellar/macvim/7.4-73_1/MacVim.app/Contents/MacOS/Vim'
 export EDITOR=$_VIM
-# JENA_HOME=$(brew info jena|sed '3q;d'|sed -E 's/^([^ \t]+)[ \t].*$/\1/g')
-export JENAROOT='/usr/local/Cellar/jena/2.12.1/bin'
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)   # nodig voor Maven
 export PATH="$PATH:$JENAROOT:$HOME/bin:."
 
 # iTerm colors {{{1 #
@@ -51,10 +46,10 @@ alias gitlogshort='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 source /usr/local/Cellar/git/2.2.0/etc/bash_completion.d/git-completion.bash
 
 # Aliasses {{{1 #
-alias aliasses='cat ~/.bash_profile | grep "alias " | sed -e "s/alias //g" | sed -e "s/=.*//g" | sort'
 alias vi="$_VIM"
 alias vim="$_VIM"
 alias vars='set|egrep "^[a-z]"'
+alias aliasses='cat ~/.bash_profile | grep "alias " | sed -e "s/alias //g" | sed -e "s/=.*//g" | sort'
 
 alias mysql='/Applications/MAMP/Library/bin/mysql'
 alias start_mamp='/Applications/MAMP/bin/start.sh'
@@ -81,7 +76,6 @@ ll() {
     # h: use unit suffixes (B, K, M, G)
     # l: list all files
     # p: write a '/' after each directory
-    # d: list current working directory
     clear
     ls -AGhlp "$@"
 }
