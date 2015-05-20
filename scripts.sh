@@ -129,3 +129,4 @@ sudo gem install terminal-notifier
 
 # iTerm-tab service:
 # https://gist.github.com/eric-hu/5846890
+# https://gist.github.com/cowboy/905546
