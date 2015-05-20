@@ -1,0 +1,39 @@
+#!/bin/bash
+
+applescript='
+-- Get front application
+tell application "System Events"
+    set activeApp to name of first application process whose frontmost is true
+end tell
+-- Activate System Preferences
+tell application "System Preferences"
+	activate
+	reveal anchor "Hearing" of pane id "com.apple.preference.universalaccess"
+end tell
+
+toggleMono()
+quit application "System Preferences"
+activate application activeApp
+
+on toggleMono()
+	-- Try clicking checkbox until GUI is loaded
+	try
+		activate application "System Preferences"
+		tell application "System Events" to tell process "System Preferences"
+			click checkbox "Speel stereogeluid mono af" of window "Toegankelijkheid" 
+		end tell
+	-- Else: wait and try again
+	on error errMsg
+		delay 0.1
+		toggleMono()
+	end try
+end toggleMono
+'
+
+osascript -e "$applescript"
+pref=$(defaults read com.apple.universalaccess stereoAsMono)
+[[ $pref = 0 ]] && pref=FALSE || pref=TRUE
+
+echo Stereo as mono: $pref
+
+exit 0

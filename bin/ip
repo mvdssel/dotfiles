@@ -1,0 +1,11 @@
+#!/bin/bash
+
+for (( i = 0; i < 10; i++ )); do
+	ip=$( ipconfig getifaddr en$i )
+	[[ -n $ip ]] && {
+		echo "en$i: $ip"
+	}
+done
+
+ip=$( curl -s ipecho.net/plain )
+echo "ipecho.net: $ip"

@@ -1,0 +1,11 @@
+#!/bin/bash
+pref=`defaults read com.apple.dashboard mcx-disabled`
+if [ $pref = 1 ]
+	then
+		pref=FALSE
+	else
+		pref=TRUE
+	fi
+defaults write com.apple.dashboard mcx-disabled -boolean $pref
+killall Dock
+echo "Dashboard disabled: $pref"

@@ -1,0 +1,10 @@
+# Toon: Bash Autocompletion
+
+# Trigger history-search-backward when pressing ↑
+"\e[A": history-search-backward			
+# Trigger history-search-forward when pressing ↑
+"\e[B": history-search-forward			
+
+set show-all-if-ambiguous on
+set completion-ignore-case on
+

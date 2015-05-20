@@ -1,0 +1,16 @@
+#!/bin/bash
+
+. ~/bin/colors
+. ~/bin/pause
+
+function printexec() {
+    [[ $# == 0 ]] && {
+        echo "Usage: $0 command [args...]" >&2
+        exit 1;
+    }
+    echo -e "$Yellow==> $Reset$@"
+    "$@"
+    [[ $? != 0 ]] && {
+        pause "An error occured, continue the script? (<CTRL-C> to abort)" >&2;
+    }
+}

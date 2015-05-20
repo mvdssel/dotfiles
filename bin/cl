@@ -1,0 +1,23 @@
+#!/bin/bash
+
+text="W a l d o ' s  T e r m i n a l"
+font="emboss2"
+# text="Waldo's Terminal"
+# font="smblock"
+
+toilet_cmd="toilet -f $font -F crop -t"
+toilet_text=$( $toilet_cmd "$text"|awk "{ if(NR ~ 1) print }" )
+toilet_width=${#toilet_text}
+
+term_width=$(tput cols)
+
+#								2x '-' en 4x ' ' en 2x '|'
+space_cnt=$(( (term_width - toilet_width - (2*3 + 4*1 + 2*1) - 2) / (2 * 2)))
+spaces=$(printf ' %.s' $(eval "echo {1.."$(($space_cnt))"}"))
+
+text="|${spaces}-  ${text}  -${spaces}|"
+
+
+clear
+$toilet_cmd "$text"
+echo

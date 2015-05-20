@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Compile and execute a C++11 program
+
+. printexec
+
+# Path to script
+path=$( echo $0|sed -E "s@$HOME@~@" )
+
+# Parameter checking
+[[ $# != 1 ]] && {
+    echo "Usage: $path file[.cpp]" >&2;
+    echo "Compiles C++ sourcecode and executes if compilation was successfull."
+    exit 1;
+}
+
+# Path to input- & output-file
+file="$1"
+if echo "$file"|grep ".cpp" 2>/dev/null 1>&2; then
+    exc=$( echo "$file"|sed -E 's@^(.*)\.[a-z0-9]+$@\1@' )
+else
+    exc="$file"
+    file="$file.cpp"
+fi
+
+# Check if input-file exists
+[[ ! -f "$file" ]] && { echo "$path: $file: No such file or directory" >&2; exit 1; }
+
+# Compile and run if no errors
+clear
+printexec gcc "$file" -Wall -ansi -g -o "$exc" -lstdc++ -std=c++0x
+printexec "./$exc"

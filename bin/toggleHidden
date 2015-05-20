@@ -1,0 +1,10 @@
+#!/bin/bash
+pref=`defaults read com.apple.finder AppleShowAllFiles`
+if [[ $pref = 1 ]]; then
+	pref=FALSE
+else
+	pref=TRUE
+fi
+defaults write com.apple.finder AppleShowAllFiles -boolean $pref
+killall Finder
+echo "Show hidden files: $pref"
