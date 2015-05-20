@@ -224,7 +224,7 @@ au FileType {cpp} set makeprg=ce\ './%'
 " Markdown
 au BufNewFile,BufRead {*.md} set ft=markdown
 au fileType {markdown} set spell
-au fileType {markdown} set spelllang=nl
+au fileType {markdown} set spelllang=en
 
 " Post-Plugin settings {{{1
 " Vim save session
