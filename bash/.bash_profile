@@ -92,6 +92,10 @@ thesis="$HOME/Documents/MAARTEN/UGent Master/Thesis"
 backend="$HOME/Sites/Mediaraven/wg_inscheck_systeem_scherm/backend"
 snippets="$HOME/.vim/bundle/vim-snippets/snippets"
 
+vex() {
+    vim `find . -name "*.tex" -type f -maxdepth 1`
+}
+
 pdftwee() {
     pdflatex --shell-escape `find . -name "*.tex" -type f -maxdepth 1`
     pdflatex `find . -name "*.tex" -type f`
