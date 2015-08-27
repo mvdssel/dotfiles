@@ -1,6 +1,10 @@
 BASH Cheatsheet
 ===============
 
+
+!! # laatste commando
+!$ # laatste argument
+
 ssh & screen
 ------------
 [link](https://ma.ttias.be/screen-a-must-for-ssh/)
@@ -50,21 +54,30 @@ tty's achterhalen
 
 tar
 ---
+Nuttige opties:
+    
+    # -c    --create
+    # -x    --extract
+    # -f    --file
+    # -t    --list
+    # -z    use gzip for compression
+    # --exclude=path/to/dir
+
 Maak tar
 
-    tar -cvf output.tar /dirname
+    tar -cvf ball.tar /dirname
 
 Bekijk tar
 
-    tar -tvf /tmp/data.tar
+    tar -tvf ball.tar
 
 Uitpakken tar
 
-    tar -xvf /tmp/data.tar
+    tar -xvf ball.tar
 
-Uitpakken van tar.gz
+Uitpakken tar.gz
 
-    tar -xzf <archief>.tar.gz
+    tar -xzf ball.tar.gz
 
 downloaden en uitpakken
 

@@ -14,7 +14,7 @@ Jobs="\j"
 
 # Prompt {{{2
 alias GitBranch="git branch | egrep '^\*'| sed 's|\*[[:space:]]\([^[[:space:]]]*\)[[:space:]]*|\1|'"
-export PS1="\[$Purple\]"'$(if [ -f /Users/maartenvandessel/bin/prompt ]; then /Users/maartenvandessel/bin/prompt; fi)$(git branch &>/dev/null;\
+export PS1="\[$Purple\]"'$(if [ -f ~/bin/prompt ]; then ~/bin/prompt; fi)$(git branch &>/dev/null;\
 if [ $? -eq 0 ]; then \
     echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
     if [ "$?" -eq "0" ]; then \
@@ -33,7 +33,7 @@ fi)'
 # Export variables {{{1 #
 export _VIM='/usr/local/Cellar/macvim/7.4-73_1/MacVim.app/Contents/MacOS/Vim'
 export EDITOR=$_VIM
-export PATH="$PATH:$JENAROOT:$HOME/bin:."
+export PATH="$PATH:$HOME/bin:."
 
 # iTerm colors {{{1 #
 export CLICOLOR=1					# ls command
@@ -80,25 +80,31 @@ ll() {
     ls -AGhlp "$@"
 }
 # 1}}} #
-fortune -s      # -n short
+cl
 
-# Thesis {{{1
+hike="/Users/maartenvandessel/Desktop/Hike 1"
+m="$HOME/Sites/jobertus/m"
+cup="$HOME/Sites/jobertus/cup"
 vop="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 VOP/vop-2014-team07/VOP-server/src/main/webapp/javascript/home"
+backend="$HOME/Sites/Mediaraven/wg_inscheck_systeem_scherm/backend"
+frontend="$HOME/Sites/Mediaraven/wg_inscheck_systeem_scherm/frontend"
+
+snippets="$HOME/.vim/bundle/vim-snippets/snippets"
+
 scriptie="$HOME/Dropbox/Thesis/scriptie"
 abstract="$HOME/Dropbox/Thesis/extended-abstract"
 voorstel="$HOME/Dropbox/Thesis/uitgebreid-voorstel (09:02:15)"
-presentatie="$HOME/Dropbox/Thesis/presentaties/presentatie-4"
+presentatie="$HOME/Dropbox/Thesis/presentaties/presentatie-5"
 thesis="$HOME/Documents/MAARTEN/UGent Master/Thesis"
-backend="$HOME/Sites/Mediaraven/wg_inscheck_systeem_scherm/backend"
-snippets="$HOME/.vim/bundle/vim-snippets/snippets"
 
+# Thesis {{{1
 vex() {
     vim `find . -name "*.tex" -type f -maxdepth 1`
 }
 
 pdftwee() {
     pdflatex --shell-escape `find . -name "*.tex" -type f -maxdepth 1`
-    pdflatex `find . -name "*.tex" -type f`
+    pdflatex --shell-escape `find . -name "*.tex" -type f -maxdepth 1`
     open *.pdf
 }
 

@@ -43,7 +43,6 @@ brew install nmap                   # check open ports on divice
 brew install git                    # git(hub)
 brew install hg                     # bitBucket
 brew install gpg                    # encrypting enzo
-brew install fortune                # awesome quotes
 
 # Developer
 brew install maven                  # JAVA package manager
@@ -93,11 +92,15 @@ sudo pip install unidecode          # Nodig voor UltiSnip om met utf-8 te werken
 #                                Node                                 #
 #######################################################################
 brew install node
-node install -g grunt               # javascript task manager
-node install -g grunt-cli           # grunt command line interface
-node install -g bower               # web package manager
-node install -g jshint              # needed for jshint.vim
-node install -g nodemon             # automatisch herstarten van nodejs servers
+npm install -g grunt               # javascript task manager
+npm install -g grunt-cli           # grunt command line interface
+npm install -g bower               # web package manager
+npm install -g jshint              # needed for jshint.vim
+npm install -g nodemon             # automatisch herstarten van nodejs servers
+npm install -g karma-cli            # Javascript test-runner
+
+# default jshintrc
+# https://raw.githubusercontent.com/jshint/jshint/master/examples/.jshintrc
 
 #######################################################################
 #                                 Gem                                 #

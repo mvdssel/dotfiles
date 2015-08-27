@@ -26,11 +26,15 @@ Movement
 - `'.` — go to last change
 - `130|` — go to column 130 of the cursor-line
 
-Buffers
--------
+Buffers & tabs
+--------------
 Move the active buffer to the right / left / ...
 
     <Ctrl-w>[HJKL]
+
+Set the active tab at certain place
+
+    tabm 2
 
 Folds
 -----
@@ -56,6 +60,11 @@ Plugins
 Shows syntastic errors
 
     :Errors
+
+Manual syntax checking
+    
+    :SyntasticToggleMode    # disable syntastic
+    :SyntasticCheck         # run syntax check
 
 Detects filetype
 

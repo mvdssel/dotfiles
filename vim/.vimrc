@@ -148,14 +148,17 @@ set infercase                   " (inf) during keyword completion, fix case of n
 let g:NERDTreeWinPos = "right"					    " Open NERDTree on right side
 let g:nerdtree_tabs_open_on_console_startup = 1		" Open NERDTreeTabs on start-up
 let NERDTreeShowBookmarks=1						    " Always show bookmarks when opening NERDTree
-map <C-w>n <plug>NERDTreeTabsToggle<CR>
 " Keybinding to toggle NERDTreeTabs
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+map <C-w>n <plug>NERDTreeTabsToggle<CR>
 " Close NERDTree when it is last open buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " YouCompleteMe
 " nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_show_diagnostics_ui = 0
+
+" T-Comment
+call tcomment#DefineType('dot', '// %s')
 
 " Syntastic
 let g:syntastic_error_symbol='X'
@@ -168,7 +171,7 @@ let g:UltiSnipsExpandTrigger="<C-B>"
 let g:UltiSnipsJumpForwardTrigger="<C-B>"
 
 " ctrlp
-" :CtrlPBookmarkDirAdd "/Users/maartenvandessel/Documents/MAARTEN/UGent Master/"
+" :CtrlPBookmarkDirAdd "~/Documents/MAARTEN/UGent Master/"
 
 " Filetypes {{{1
 " LaTeX
