@@ -18,19 +18,21 @@ while(<DATA>) {
     chomp;
     #           a price/count     times   a price/count      the product
     #      1     2                  3    4   5                6
-    if (m/^(-?\d+([\.,]\d{1,2})?)\s+(x\s+(\d+([\.,]\d+)?)\s+)?(.*)$/) {
+    if (m/^(-?\d+([\.,]\d{1,2})?)(\s*x\s*(\d+([\.,]\d+)?))?\s+(.*)$/) {
         # extract values
-        my $count = $1 || 1;
-        my $price = $4 || 1;
+        my ($count, $price) = ($1, $4);
+        $count = 1 if !defined $count || $count eq '';      # Can't use default assignment since value '0' is possible
+        $price = 1 if !defined $price || $price eq '';      # Can't use default assignment since value '0' is possible
         my $product = $6 || "NO PRODUCT FOUND";
+
 
         # create correct numeric presentation (must come after, because resets the $-values)
         $price =~ s/,/./;
         $count =~ s/,/./;
 
         # $count should be the integer value (instead of $price)
-        if(($price =~ m/^\d+$/ && !($count =~ /^\d+$/)) || 
-           ($price < $count)
+        if(($price =~ m/^\d+$/ && !($count =~ /^\d+$/))
+            || ($price < $count)
         ) {
             # print "swapping $price and $count\n";
             ($count, $price) = ($price, $count);
@@ -50,3 +52,12 @@ while(<DATA>) {
 print "Ik heb $total_price EUR uitgegeven aan $total_count producten.\n";
 
 __DATA__
+
+07/06/15
+32,46 thesis afprinten
+5 fietsband voorkamp
+15 Eten voorkamp
+4 fietsenhouder decathlon 
+-34,2 betalingen visa kaart
+
+

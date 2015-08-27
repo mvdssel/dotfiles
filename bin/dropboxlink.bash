@@ -3,8 +3,8 @@
 . printexec
 . colors
 
-src="/Users/maartenvandessel/Music/iTunes/iTunes Media/Music/"
-dest="/Users/maartenvandessel/Dropbox/GSM/Music/"
+src="$HOME/Music/iTunes/iTunes Media/Music/"
+dest="$HOME/Dropbox/GSM/Music/"
 
 for link in "$@"; do
     if [[ -d "$link" ]]; then

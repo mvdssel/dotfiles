@@ -21,7 +21,7 @@ stop_mamp='/Applications/MAMP/bin/stop.sh'
 
 # Settings
 site_name=drupal-7
-site_mail=maartenvandessel@hotmail.com
+site_mail=waldoplasmatics@hotmail.com
 account_name=mvdssel
 account_pass=shei8wae
 db_su_name=root
