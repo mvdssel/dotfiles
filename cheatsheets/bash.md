@@ -82,3 +82,11 @@ Uitpakken tar.gz
 downloaden en uitpakken
 
     curl -L <url>|tar zx
+
+tput
+----
+Dimensions of terminal window
+    
+    tput cols
+    tput lines
+

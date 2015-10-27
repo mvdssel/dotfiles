@@ -19,6 +19,7 @@ Plugin 'mattn/emmet-vim'            " zen-coding
 
 Plugin 'scrooloose/syntastic'       " syntax-checkers / -highlighting
 Plugin 'Shutnik/jshint2.vim'
+Plugin 'evidens/vim-twig'
 
 Plugin 'scrooloose/nerdtree'        " nerdtree
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -39,7 +40,8 @@ filetype plugin indent on           " required
 set noerrorbells visualbell t_vb=       " Disable beeping
 set makeprg=clear;'%'	                " default makeprg if none is specified
 set autowrite
-set showmatch                   " (sm) briefly jump to matching bracket when inserting one
+set backspace=2                         " make backspace work like most other apps
+set showmatch                           " (sm) briefly jump to matching bracket when inserting one
 set nocompatible                        " don't behave like vi
 set history=1000
 filetype plugin on
@@ -203,11 +205,12 @@ au BufNewFile,BufRead {*.html} set makeprg=open\ '%'
 
 " php
 let php_folding=1
-au BufNewFile,BufRead {*.inc,*.module,*.install} set ft=php
+au FileType {php} set foldlevel=2
+au BufNewFile,BufRead {*.inc,*.module,*.install} set ft=php     " Drupal shizzle
 au FileType {php} set makeprg=clear;php\ './%'
 
 " JavaScript
-au BufNewFile,BufRead {*.js,*.json,*.coffee} set ft=javascript	" json & coffee syntax highlighting
+au BufNewFile,BufRead {*.js,*.json,*.coffee} set ft=javascript	"JSON & Coffee syntax highlighting
 
 " Perl make-program
 let perl_fold=1

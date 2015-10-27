@@ -3,115 +3,142 @@
 set -o xtrace   # Log all executed commands
 set -e          # Exit on error
 
-#######################################################################
-#                              Services                               #
-#######################################################################
+function init() {
+    # disable dashboard
+    defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
 
-#######################################################################
-#                               Safari                                #
-#######################################################################
-# addblock
-# gostery
-# javascript blocker
+    # enable quicklook selection
+    defaults write com.apple.finder QLEnableTextSelection -bool TRUE;killall Finder
 
-#######################################################################
-#                            OSX Settings                             #
-#######################################################################
-# enable quicklook selection
-defaults write com.apple.finder QLEnableTextSelection -bool TRUE;killall Finder
-# remove "last login" message from terminal
-touch ~/.hushlogin                  
-# install xcode command line tools
-xcode-select --install
+    # remove "last login" message from terminal
+    touch ~/.hushlogin                  
 
-#######################################################################
-#                                Brew                                 #
-#######################################################################
-# - EERST XCODE CMD LINE TOOLS INSTALLEREN
-# - Warnings bij brew doctor kunnen genegeerd worden
-# - Bij problemen: brew uninstall --force <tap> && brew install --force <tap>
-# Installeren Brew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    # install xcode command line tools
+    # xcode-select --install
 
-# Bash-commands
-brew install macvim                 # nodig voor YCM plugin
-brew install tree                   # ls art
-brew install toilet                 # ascii art
-brew install wget                   # curl companion
-brew install stow                   # symlinking
-brew install nmap                   # check open ports on divice
-brew install git                    # git(hub)
-brew install hg                     # bitBucket
-brew install gpg                    # encrypting enzo
+    # Installeren Brew
+    # - Warnings bij brew doctor kunnen genegeerd worden
+    # - Bij problemen: brew uninstall --force <tap> && brew install --force <tap>
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+}
 
-# Developer
-brew install maven                  # JAVA package manager
-brew install ant                    # JAVA process automator
-brew install jena                   # JAVA & Semantic Web 
-brew install homebrew/php/drush     # Drupal command line interface
-brew install homebrew/php/composer  # PHP dependency manager
+function install_taps() {
+    declare -a taps=(
+    vim     # nodig voor ycm
+    cmake   # nodig voor ycm
+    tree    # ls art
+    toilet  # ascii art
+    wget    # curl companion
+    stow    # symlinking
+    nmap    # check open ports on device
+    git     # git
+    hg      # bitbucket
+    gpg     # enctyption
 
-# Applications
-brew cask install firefox           # sometimes better browsing
-Caskroom/cask/iterm2                # awesome terminal
-Caskroom/cask/sequel-pro            # SQL shizzle
-brew cask install dropbox           # Dropbox
-brew cask install get-lyrical       # iTunes lyrics
-brew cask install vlc               # VLC
-brew cask install audacity          # best audio manipulation software
-brew cask install tunnelblick       # VPN at IBCN
-brew cask install mamp              # Mamp
-brew cask install transmission      # Transmission
-brew cask install protege           # ontologies
-brew cask install graphviz          # graph ontologies
-                                    # linken aan protege via: which dot
-                                    # en dan in instellingen van protege juist zetten
+    # maven   # java dependency manager
+    )
 
-# QuickLook Plugins 
-# https://github.com/sindresorhus/quick-look-plugins
-brew cask install qlcolorcode       # syntax highlighting
-brew cask install qlstephen         # plain text files
-brew cask install qlmarkdown        # markdown
-brew cask install quicklook-json    # json
-brew cask install qlprettypatch     # patch files
-brew cask install quicklook-csv     # csv
-brew cask install betterzipql       # zip contents
-brew cask install qlimagesize       # size & resolution of images
-brew cask install suspicious-package # pkg-packages
+    for tap in ${taps[@]}; do
+        brew install $tap
+    done
+}
 
-#######################################################################
-#                               Python                                #
-#######################################################################
-brew install python3
-sudo easy_install pip               # Python package manager
-sudo easy_install Pygments          # LaTeX syntax highlighting via minted package
-sudo pip install unidecode          # Nodig voor UltiSnip om met utf-8 te werken
+function install_cask_taps() {
+    declare -a cask_taps=(
+    firefox
+    iterm2
+    dropbox
+    get-lyrical
+    vlc
+    vlcstreamer
+    spotify
+    audacity
+    mamp
+    transmission
+    scribus
+    cyberduck
+    skype
 
+    # sequel-pro
+    # protege
+    # graphviz    # dot-graphs (linken aan protege via `which dot`)
+    )
 
-#######################################################################
-#                                Node                                 #
-#######################################################################
-brew install node
-npm install -g grunt               # javascript task manager
-npm install -g grunt-cli           # grunt command line interface
-npm install -g bower               # web package manager
-npm install -g jshint              # needed for jshint.vim
-npm install -g nodemon             # automatisch herstarten van nodejs servers
-npm install -g karma-cli            # Javascript test-runner
+    for tap in ${cask_taps[@]}; do
+        brew cask install $tap
+    done
+}
 
-# default jshintrc
-# https://raw.githubusercontent.com/jshint/jshint/master/examples/.jshintrc
+function install_quicklook_taps() {
+    # https://github.com/sindresorhus/quick-look-plugins
+    declare -a quicklook_taps=(
+    qlcolorcode       # syntax highlighting
+    qlstephen         # plain text files
+    qlmarkdown        # markdown
+    quicklook-json    # json
+    qlprettypatch     # patch files
+    quicklook-csv     # csv
+    betterzipql       # zip contents
+    qlimagesize       # size & resolution of images
+    suspicious-package # pkg-packages
+    )
 
-#######################################################################
-#                                 Gem                                 #
-#######################################################################
-sudo gem install sass
-sudo gem install compass
-sudo gem install terminal-notifier
+    for tap in ${quicklook_taps[@]}; do
+        brew cask install $tap
+    done
+}
 
-#######################################################################
-#                              Wireshark                              #
-#######################################################################
+function install_python() {
+    brew install python3        # nieuwe python
+    sudo easy_install pip       # Python package manager
+    sudo pip install unidecode  # Nodig voor UltiSnip om met utf-8 te werken
+}
+
+function install_node() {
+    brew install node
+
+    declare -a packages=(
+    grunt       # javascript task manager
+    grunt-cli   # grunt command line interface
+    bower       # web package manager
+    jshint      # needed for jshint.vim
+    nodemon     # automatisch herstarten van nodejs servers
+    gulp        # javascript task runner
+    )
+
+    for package in ${packages[@]}; do
+        npm install -g $package
+    done
+
+    # default jshintrc
+    # https://raw.githubusercontent.com/jshint/jshint/master/examples/.jshintrc
+}
+
+function install_gems() {
+    declare -a gems=(
+    sass
+    compass
+    # terminal-notifier
+    )
+
+    for gem in ${gems[@]}; do
+        sudo gem install $gem
+    done
+}
+
+# PHP
+# cd ~/Sites; wget https://phar.phpunit.de/phpunit.phar
+# cd ~/Sites; curl -sS https://getcomposer.org/installer | php
+
+# ITERM
+# base16 colorschemes:
+# http://chriskempson.github.io/base16/
+# https://github.com/chriskempson/base16
+# iTerm-tab service:
+# https://gist.github.com/eric-hu/5846890
+# https://gist.github.com/cowboy/905546
+
+# WIRESHARK
 #brew install wireshark
 ## If your list of available capture interfaces is empty
 ## (default OS X behavior), try the following commands:
@@ -123,13 +150,16 @@ sudo gem install terminal-notifier
 #tar zxvf ChmodBPF.tar.gz
 #open ChmodBPF/Install\ ChmodBPF.app
 
-#######################################################################
-#                                iTerm                                #
-#######################################################################
-# base16 colorschemes:
-# http://chriskempson.github.io/base16/
-# https://github.com/chriskempson/base16
+# SAFARI
+# addblock
+# gostery
+# javascript blocker
 
-# iTerm-tab service:
-# https://gist.github.com/eric-hu/5846890
-# https://gist.github.com/cowboy/905546
+init
+install_taps
+install_cask_taps
+install_quicklook_taps
+install_python
+install_node
+install_gems
+

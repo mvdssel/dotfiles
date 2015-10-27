@@ -31,8 +31,7 @@ fi)'
 # 2}}} #
 # 1}}} #
 # Export variables {{{1 #
-export _VIM='/usr/local/Cellar/macvim/7.4-73_1/MacVim.app/Contents/MacOS/Vim'
-export EDITOR=$_VIM
+export EDITOR='/usr/local/Cellar/vim/7.4.826/bin/vim'
 export PATH="$PATH:$HOME/bin:."
 
 # iTerm colors {{{1 #
@@ -43,19 +42,24 @@ export GREP_OPTIONS='--color=auto'	# make grep highlight matches
 alias gitlog='git log --graph --decorate --all'
 alias gitlogshort='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 # Git autocompletion
-source /usr/local/Cellar/git/2.2.0/etc/bash_completion.d/git-completion.bash
+source /usr/local/Cellar//git/2.5.0/etc/bash_completion.d/git-completion.bash
 
-# Aliasses {{{1 #
-alias vi="$_VIM"
-alias vim="$_VIM"
+# Aliasses & Functions {{{1 #
+alias php="/usr/local/Cellar/php56/5.6.14/bin/php"
+alias composer='php ~/Sites/composer.phar'
+alias phpunit='php ~/Sites/phpunit.phar'
+alias sf='php app/console'
+
+alias vi="$EDITOR"
+alias vim="$EDITOR"
 alias vars='set|egrep "^[a-z]"'
 alias aliasses='cat ~/.bash_profile | grep "alias " | sed -e "s/alias //g" | sed -e "s/=.*//g" | sort'
 
 alias mysql='/Applications/MAMP/Library/bin/mysql'
 alias start_mamp='/Applications/MAMP/bin/start.sh'
 alias stop_mamp='/Applications/MAMP/bin/stop.sh'
+alias restart_mamp='/Applications/MAMP/bin/stop.sh;sleep 1;/Applications/MAMP/bin/start.sh'
 
-# Functions {{{1 #
 # Toon: Start Screensaver Alias
 alias screensaver='/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine'
 
@@ -82,7 +86,6 @@ ll() {
 # 1}}} #
 cl
 
-hike="/Users/maartenvandessel/Desktop/Hike 1"
 m="$HOME/Sites/jobertus/m"
 cup="$HOME/Sites/jobertus/cup"
 vop="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 VOP/vop-2014-team07/VOP-server/src/main/webapp/javascript/home"
@@ -91,13 +94,7 @@ frontend="$HOME/Sites/Mediaraven/wg_inscheck_systeem_scherm/frontend"
 
 snippets="$HOME/.vim/bundle/vim-snippets/snippets"
 
-scriptie="$HOME/Dropbox/Thesis/scriptie"
-abstract="$HOME/Dropbox/Thesis/extended-abstract"
-voorstel="$HOME/Dropbox/Thesis/uitgebreid-voorstel (09:02:15)"
-presentatie="$HOME/Dropbox/Thesis/presentaties/presentatie-5"
-thesis="$HOME/Documents/MAARTEN/UGent Master/Thesis"
-
-# Thesis {{{1
+# TeX {{{1
 vex() {
     vim `find . -name "*.tex" -type f -maxdepth 1`
 }

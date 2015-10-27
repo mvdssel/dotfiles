@@ -52,12 +52,7 @@ while(<DATA>) {
 print "Ik heb $total_price EUR uitgegeven aan $total_count producten.\n";
 
 __DATA__
-
-07/06/15
-32,46 thesis afprinten
-5 fietsband voorkamp
-15 Eten voorkamp
-4 fietsenhouder decathlon 
--34,2 betalingen visa kaart
-
-
+32 lidgeld scouts
+21,96 viswinkel
+22,17 ricard + tomaten
+8,14 spek en chercutrie

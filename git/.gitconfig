@@ -2,9 +2,9 @@
     name = Waldo Plasmatics
     email = maartenvandessel@hotmail.com
 
-[credential]
-    username = mvdssel
-    helper = "cache --timeout=3600"
+# [credential]
+#     username = mvdssel
+#     helper = "cache --timeout=3600"
 
 [core]
     editor = vim
@@ -29,5 +29,5 @@
     ; co = checkout
     ; st = status
 
-[push]
-    default = current
+# [push]
+#     default = current
