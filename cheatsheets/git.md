@@ -16,3 +16,8 @@ Links existing, local git to new remote git
 
     git remote add origin https://github.com/username/repository.git
     git push -u origin master
+
+Use SSH to deploy
+-----------------
+1. Generate an SSH key: [https://help.github.com/articles/generating-ssh-keys/](link)
+2. Switch from HTTPS to SSH: [https://help.github.com/articles/changing-a-remote-s-url/](link)
