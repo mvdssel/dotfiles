@@ -104,6 +104,7 @@ function install_node() {
     jshint      # needed for jshint.vim
     nodemon     # automatisch herstarten van nodejs servers
     gulp        # javascript task runner
+    karma       # javascript testing suite
     )
 
     for package in ${packages[@]}; do
