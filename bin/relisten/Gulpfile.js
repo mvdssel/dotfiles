@@ -8,6 +8,7 @@
 var gulp       = require('gulp'),
     gutil      = require('gulp-util'),
     uglify     = require('gulp-uglify'),
+    notify     = require('gulp-notify'),
     sourcemaps = require('gulp-sourcemaps'),
     concat     = require('gulp-concat'),
     connect    = require('gulp-connect'),
@@ -37,6 +38,7 @@ gulp.task('js', function () {
             .on('error', gutil.log)
         .pipe(sourcemaps.write())
         .pipe(gulp.dest(paths.dist))
+        .pipe(notify('Finished browserify compilation'))
         .pipe(connect.reload());
 });
 
