@@ -11,11 +11,9 @@ var gulp       = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     concat     = require('gulp-concat'),
     connect    = require('gulp-connect'),
-    zip        = require('gulp-zip'),
     browserify = require('browserify'),
     source     = require('vinyl-source-stream'),
-    buffer     = require('vinyl-buffer'),
-    del        = require('del');
+    buffer     = require('vinyl-buffer');
 
 var paths = {
     html: './app/index.html',
@@ -23,10 +21,6 @@ var paths = {
     app: './app/js/browserApp.js',
     dist: './dist',
 };
-
-gulp.task('clean', function() {
-    return del(['dist']);
-});
 
 gulp.task('js', function () {
     var b = browserify({
@@ -70,14 +64,11 @@ gulp.task('webserver', function() {
     });
 });
 
-gulp.task('zip', function () {
-    gulp.src(paths.dist)
-        .pipe(zip('archive.zip'))
-        .pipe(gulp.dest('./'));
+gulp.task('install', ['html', 'style', 'js']);
+gulp.task('default', ['webserver', 'install', 'watch']);
+
+gulp.task('watch', function() {
+    gulp.watch(paths.html, ['html']);
+    gulp.watch(paths.scss, ['style']);
+    gulp.watch(paths.js, ['js']);
 });
-
-gulp.task('default', ['clean', 'webserver', 'html', 'style', 'js']);
-
-gulp.watch(paths.html, ['html']);
-gulp.watch(paths.scss, ['style']);
-gulp.watch(paths.js, ['js']);
