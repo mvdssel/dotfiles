@@ -11,7 +11,7 @@ var titleRegexp = new RegExp('itemprop="name">([^<]+)</span>', 'g'),
 
 var SongFactory = {
     getSongs: function(station, date, callback) {
-        var formattedDate = util.format('%s-%s-%s', date.getDate(), date.getMonth(), date.getFullYear());
+        var formattedDate = util.format('%s-%s-%s', date.getDate(), 1 + date.getMonth(), date.getFullYear());
         var url = util.format('%s/%s/%s.html', baseUrl, station, formattedDate);
         request(url, function(error, request, body) {
             if(error) {

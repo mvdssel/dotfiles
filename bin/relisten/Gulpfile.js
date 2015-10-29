@@ -20,7 +20,7 @@ var gulp       = require('gulp'),
 var paths = {
     html: './app/index.html',
     js: './app/js/**/*.js',
-    app: './app/js/app.js',
+    app: './app/js/browserApp.js',
     dist: './dist',
 };
 

@@ -15,11 +15,11 @@ var PlaylistFactory = {
         async.waterfall([
                 StationFactory.getStations,
                 function(stations, callback) {
-                    async.each(stations, function(station, stationCallback) {
-                        async.each(dates, function(date, dateCallback) {
+                    async.eachSeries(stations, function(station, stationCallback) {
+                        async.eachLimit(dates, 10, function(date, dateCallback) {
                             SongFactory.getSongs(station, date, function(error, songs) {
                                 if(error) {
-                                    console.error(util.format('Error while fetching songs from %s (%s):', station, date), error);
+                                    console.error(util.format('Error while fetching songs from %s (%s):', station, formatDate(date)), error);
                                     dateCallback(error);
                                 }
                                 else {
