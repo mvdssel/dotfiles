@@ -11,8 +11,8 @@ var titleRegexp = new RegExp('itemprop="name">([^<]+)</span>', 'g'),
 
 var SongFactory = {
     getSongs: function(station, date, callback) {
-        var formattedDate = util.format('%s-%s-%s', date.getDate(), 1 + date.getMonth(), date.getFullYear());
-        var url = util.format('%s/%s/%s.html', baseUrl, station, formattedDate);
+        var url = generateUrl(station, date);
+
         request(url, function(error, request, body) {
             if(error) {
                 callback(error);
@@ -25,7 +25,16 @@ var SongFactory = {
     },
 };
 
+function generateUrl(station, date) {
+    var formattedDate = util.format('%s-%s-%s', date.getDate(), 1 + date.getMonth(), date.getFullYear());
+    var url = util.format('%s/%s/%s.html', baseUrl, station, formattedDate);
+    return url;
+}
+
 function extractSongs(body) {
+    // Reset the RegExp-objects
+    titleRegexp.lastIndex = artistRegexp.lastIndex = playtimeRegexp.lastIndex = 0;
+
     var songs = [],
         titleMatch, artistMatch, playtimeMatch;
 

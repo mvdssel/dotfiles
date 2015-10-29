@@ -11,18 +11,10 @@ $(document).ready(function() {
 /**
  * Initialize pickers
  */
-var maxDate = new Date(),
-    minDate = new Date(maxDate.getFullYear(), maxDate.getMonth(), 1);
-
 var pickerOptions = {
-    monthsFull: ['Januari', 'Februari', 'Maart', 'April', 'Mei', 'Juni', 'Juli', 'Augustus', 'September', 'Oktober', 'November', 'December'],
-    monthsShort: ['Jan', 'Feb', 'Mrt', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
-    weekdaysFull: ['Zondag', 'Maandag', 'Dinsdag', 'Woensdag', 'Donderdag', 'Vrijdag', 'Zaterdag'],
-    weekdaysShort: ['Zon', 'Ma', 'Di', 'Woe', 'Do', 'Vr', 'Zat'],
-    format: 'yyyy-mm-dd',
-    firstDay: 1,
-    min: minDate,
-    max: maxDate,
+    format: 'yyyy-mm-dd', // needed for parsing to dates
+    firstDay: 1, // first day of week = monday
+    max: true, // max = today
 };
 
 var $startDate = $('#start-date').pickadate(pickerOptions);

@@ -23,7 +23,7 @@ var PlaylistFactory = {
                                     dateCallback(error);
                                 }
                                 else {
-                                    console.log(util.format('Fetched songs for %s (%s)', station, formatDate(date)));
+                                    console.log(util.format('Fetched %s songs for %s (%s)', songs.length, station, formatDate(date)));
                                     handleSongs(playlists, station, date, songs);
                                     dateCallback();
                                 }
@@ -51,7 +51,7 @@ function handleSongs(playlists, station, date, songs) {
 }
 
 function formatDate(date) {
-    return util.format('%s-%s-%s', date.getDate(), date.getMonth(), date.getFullYear());
+    return util.format('%s-%s-%s', date.getDate(), 1 + date.getMonth(), date.getFullYear());
 }
 
 module.exports = PlaylistFactory;

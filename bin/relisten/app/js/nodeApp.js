@@ -1,7 +1,8 @@
 'use strict';
 
-var PlaylistFactory = require('./PlaylistFactory'),
-    Serializer = require('./Serializer');
+var fs = require('fs');
+var PlaylistFactory = require('./PlaylistFactory');
+var Serializer = require('./Serializer');
 
 var filename = './playlists.csv';
 var stopDate = new Date();
@@ -15,7 +16,6 @@ function handlePlaylists(error, playlists) {
     }
     else {
         var csvData = Serializer.serialize(playlists);
-        var fs = require('fs');
         fs.writeFile(filename, csvData, function(error) {
             if(error) {
                 return console.error('Error while writing to filesystem: ', error);
