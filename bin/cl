@@ -11,7 +11,7 @@ toilet_width=${#toilet_text}
 
 term_width=$(tput cols)
 
-#								2x '-' en 4x ' ' en 2x '|'
+#                                         2x '-' en 4x ' ' en 2x '|'
 space_cnt=$(( (term_width - toilet_width - (2*3 + 4*1 + 2*1) - 2) / (2 * 2)))
 spaces=$(printf ' %.s' $(eval "echo {1.."$(($space_cnt))"}"))
 
