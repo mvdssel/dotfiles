@@ -58,6 +58,7 @@ function install_cask_taps() {
     scribus
     cyberduck
     skype
+    kodi # the new PopcornTime
 
     # sequel-pro
     # protege
