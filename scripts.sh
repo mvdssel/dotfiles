@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -o xtrace   # Log all executed commands
-set -e          # Exit on error
+# set -e          # Exit on error
 
 function init() {
     # disable dashboard
@@ -14,12 +14,13 @@ function init() {
     touch ~/.hushlogin                  
 
     # install xcode command line tools
-    # xcode-select --install
+    $(xcode-select --install)
 
     # Installeren Brew
     # - Warnings bij brew doctor kunnen genegeerd worden
     # - Bij problemen: brew uninstall --force <tap> && brew install --force <tap>
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    brew update
 }
 
 function install_taps() {
@@ -32,9 +33,9 @@ function install_taps() {
     stow    # symlinking
     nmap    # check open ports on device
     git     # git
-    hg      # bitbucket
     gpg     # enctyption
 
+    # hg      # bitbucket
     # maven   # java dependency manager
     )
 
@@ -55,13 +56,16 @@ function install_cask_taps() {
     audacity
     mamp
     transmission
-    scribus
     cyberduck
     skype
     kodi # the new PopcornTime
+    evernote
+    slack
 
+    # telegram
     # sequel-pro
-    # protege
+    # scribus # open-source Adobe InDesign
+    # protege # ontology editor
     # graphviz    # dot-graphs (linken aan protege via `which dot`)
     )
 
@@ -91,28 +95,29 @@ function install_quicklook_taps() {
 
 function install_python() {
     brew install python3        # nieuwe python
-    sudo easy_install pip       # Python package manager
-    sudo pip install unidecode  # Nodig voor UltiSnip om met utf-8 te werken
+    # sudo easy_install pip       # Python package manager
+    # sudo pip install unidecode  # Nodig voor UltiSnip om met utf-8 te werken
 }
 
 function install_node() {
     brew install node
 
     declare -a packages=(
-    grunt       # javascript task manager
-    grunt-cli   # grunt command line interface
-    bower       # web package manager
+    gulp        # javascript task runner
     jshint      # needed for jshint.vim
     nodemon     # automatisch herstarten van nodejs servers
-    gulp        # javascript task runner
     karma       # javascript testing suite
+
+    # bower       # web package manager
+    # grunt       # javascript task manager
+    # grunt-cli   # grunt command line interface
     )
 
     for package in ${packages[@]}; do
         npm install -g $package
     done
 
-    # default jshintrc
+    # default .jshintrc
     # https://raw.githubusercontent.com/jshint/jshint/master/examples/.jshintrc
 }
 
@@ -120,6 +125,7 @@ function install_gems() {
     declare -a gems=(
     sass
     compass
+
     # terminal-notifier
     )
 

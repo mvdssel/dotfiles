@@ -86,7 +86,6 @@ ll() {
 # 1}}} #
 cl
 
-relisten="$HOME/Documents/Projects/relisten"
 m="$HOME/Sites/jobertus/m"
 cup="$HOME/Sites/jobertus/cup"
 vop="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 VOP/vop-2014-team07/VOP-server/src/main/webapp/javascript/home"
