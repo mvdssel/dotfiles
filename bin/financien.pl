@@ -12,9 +12,11 @@ use warnings;
 #
 # Skips empty lines and prints an error if a line can't be read.
 
+open(FILE, "<", "financien.txt");
+
 my $total_price = 0;
 my $total_count = 0;
-while(<DATA>) {
+while(<FILE>) {
     chomp;
     #           a price/count     times   a price/count      the product
     #      1     2                  3    4   5                6
@@ -50,9 +52,3 @@ while(<DATA>) {
 }
 
 print "Ik heb $total_price EUR uitgegeven aan $total_count producten.\n";
-
-__DATA__
-32 lidgeld scouts
-21,96 viswinkel
-22,17 ricard + tomaten
-8,14 spek en chercutrie

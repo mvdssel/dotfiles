@@ -28,5 +28,17 @@ fi
 
 # Compile and run if no errors
 clear
-printexec gcc "$file" -Wall -ansi -g -o "$exc" -lstdc++ -std=c++0x
+
+flags=(
+    -Wall           # show all warnings about bad or wrong constructions
+    -ansi           # show ANSI C warnings & errors
+    -g              # keep debugging information in the executable
+    -lstdc++        # use gcc instead of g++
+    -std=c++0x      # compile as C++11
+    -stdlib=libc++  # use libc++ as std-library
+    -lc++           # link libc++ correctly
+    -lcrypto        # adds support for openssl cryptographic functions (eg. MD5)
+)
+
+printexec gcc "$file" ${flags[@]} -o "$exc"
 printexec "./$exc"
