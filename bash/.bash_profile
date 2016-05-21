@@ -86,6 +86,10 @@ ll() {
 # 1}}} #
 cl
 
+algo1="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 Algoritmen I"
+algo2="$HOME/Documents/MAARTEN/Archief/2014-2015 UGent Master/UGent Master/1 Algoritmen II/"
+algo="$algo2"
+
 m="$HOME/Sites/jobertus/m"
 cup="$HOME/Sites/jobertus/cup"
 vop="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 VOP/vop-2014-team07/VOP-server/src/main/webapp/javascript/home"

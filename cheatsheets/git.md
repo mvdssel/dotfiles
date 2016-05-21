@@ -1,12 +1,23 @@
 GIT Cheatsheet
 ==============
 
+Detatched HEAD
+--------------
+Make the current commit the HEAD of the master branch
+
+    # current situation: HEAD -> (the commit)
+
+    git checkout -b temp        # HEAD -> (temp branch) -> (the commit)
+    git branch -f master temp   # master -> (the commit)
+    git checkout master         # HEAD -> master -> (the commit)
+    git branch -d temp          # removes the temp branch
+
 Revert commit, keep the changes
 -------------------------------
 Zorgt ervoor dat de laatste commit ongedaan wordt gemaakt.
 De wijzigingen blijven behouden, maar zitten niet meer in de 
 repository. Ze worden dus terug lokaal en moeten nog "gecommit"
-worden. Ze zijn te zien bij $ git status.
+worden. Ze zijn te zien bij `$ git status`.
 
     git reset --soft HEAD^
 
