@@ -47,7 +47,7 @@ set history=1000
 filetype plugin on
 let mapleader = ','
 set mouse=a
-set viminfo+=n~/dotfiles/vim/.viminfo   " move .viminfo to dotfiles
+set viminfo+=n~/.vim/.viminfo           " move .viminfo to dotfiles
 set scrolloff=5
 set backupdir=~/.vim/backups            " Directories for swp files
 set directory=~/.vim/backups
@@ -126,7 +126,7 @@ set cursorline          " Color the cursorline
 syntax on               " Syntax highlighting
 " Base16 (GEEN gebruik maken van de 256-color themes in iTerm!!!)
 set background=dark
-colorscheme base16-default
+colorscheme base16-default-dark
 
 " Spacing/Tabs {{{1
 set tabstop=4           " Tab width

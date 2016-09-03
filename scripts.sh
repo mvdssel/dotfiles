@@ -13,8 +13,16 @@ function init() {
     # remove "last login" message from terminal
     touch ~/.hushlogin                  
 
-    # install xcode command line tools
+    # Vim necessities
+    # - create folder structure of .vimrc
+    # - install Vundle
+    mkdir -p ~/.vim/backups
+    mkdir -p ~/.vim/bundle
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+    # Brew necessities
     $(xcode-select --install)
+    clang
 
     # Installeren Brew
     # - Warnings bij brew doctor kunnen genegeerd worden
@@ -35,8 +43,8 @@ function install_taps() {
     git     # git
     gpg     # enctyption
 
-    # hg      # bitbucket
-    # maven   # java dependency manager
+    hg      # bitbucket
+    maven   # java dependency manager
     )
 
     for tap in ${taps[@]}; do
@@ -58,10 +66,10 @@ function install_cask_taps() {
     transmission
     cyberduck
     skype
-    kodi # the new PopcornTime
     evernote
     slack
 
+    # kodi # the new PopcornTime
     # telegram
     # sequel-pro
     # scribus # open-source Adobe InDesign
@@ -106,8 +114,8 @@ function install_node() {
     gulp        # javascript task runner
     jshint      # needed for jshint.vim
     nodemon     # automatisch herstarten van nodejs servers
-    karma       # javascript testing suite
 
+    # karma       # javascript testing suite
     # bower       # web package manager
     # grunt       # javascript task manager
     # grunt-cli   # grunt command line interface
@@ -140,11 +148,9 @@ function install_gems() {
 
 # ITERM
 # base16 colorschemes:
-# http://chriskempson.github.io/base16/
 # https://github.com/chriskempson/base16
 # iTerm-tab service:
 # https://gist.github.com/eric-hu/5846890
-# https://gist.github.com/cowboy/905546
 
 # WIRESHARK
 #brew install wireshark
@@ -163,6 +169,9 @@ function install_gems() {
 # gostery
 # javascript blocker
 
+# java
+# git
+
 init
 install_taps
 install_cask_taps
@@ -170,4 +179,4 @@ install_quicklook_taps
 install_python
 install_node
 install_gems
-
+		

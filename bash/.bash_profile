@@ -31,7 +31,7 @@ fi)'
 # 2}}} #
 # 1}}} #
 # Export variables {{{1 #
-export EDITOR='/usr/local/Cellar/vim/7.4.826/bin/vim'
+export EDITOR='/usr/local/Cellar/vim/7.4.2235/bin/vim'
 export PATH="$PATH:$HOME/bin:."
 
 # iTerm colors {{{1 #
@@ -42,7 +42,7 @@ export GREP_OPTIONS='--color=auto'	# make grep highlight matches
 alias gitlog='git log --graph --decorate --all'
 alias gitlogshort='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 # Git autocompletion
-source /usr/local/Cellar//git/2.5.0/etc/bash_completion.d/git-completion.bash
+# source /usr/local/Cellar//git/2.5.0/etc/bash_completion.d/git-completion.bash
 
 # Aliasses & Functions {{{1 #
 alias php="/usr/local/Cellar/php56/5.6.14/bin/php"
