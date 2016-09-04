@@ -42,6 +42,7 @@ function install_taps() {
     nmap    # check open ports on device
     git     # git
     gpg     # enctyption
+    ffmpeg  # epic audio shit
 
     hg      # bitbucket
     maven   # java dependency manager
@@ -151,6 +152,7 @@ function install_gems() {
 # https://github.com/chriskempson/base16
 # iTerm-tab service:
 # https://gist.github.com/eric-hu/5846890
+cp -r "~/dotfiles/Open in iTerm.workflow" "~/Library/Services/"
 
 # WIRESHARK
 #brew install wireshark
