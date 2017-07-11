@@ -32,7 +32,7 @@ fi)'
 # 1}}} #
 # Export variables {{{1 #
 export EDITOR='/usr/local/Cellar/vim/7.4.2235/bin/vim'
-export PATH="$PATH:$HOME/bin:."
+export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # iTerm colors {{{1 #
 export CLICOLOR=1					# ls command
@@ -89,6 +89,10 @@ cl
 algo1="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 Algoritmen I"
 algo2="$HOME/Documents/MAARTEN/Archief/2014-2015 UGent Master/UGent Master/1 Algoritmen II/"
 algo="$algo2"
+
+php="/Applications/MAMP/bin/php/php5.6.10/bin/php"
+
+mule="/Users/mvdssel/Dropbox/Deloitte/MuleSoft/MUFundamentals3.8_studentFiles_16aug2016"
 
 m="$HOME/Sites/jobertus/m"
 cup="$HOME/Sites/jobertus/cup"

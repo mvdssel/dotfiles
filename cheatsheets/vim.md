@@ -17,6 +17,8 @@ Actions
 - `J` — join the line below to the current one
 - `.` — repeat last action
 - `gv` — repeat last selection
+- `"a` `yy` - yank to register a
+- `"a` `p` - past from register a
 
 Movement
 --------

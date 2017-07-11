@@ -60,22 +60,24 @@ function install_cask_taps() {
     dropbox
     get-lyrical
     vlc
-    vlcstreamer
     spotify
     audacity
     mamp
     transmission
     cyberduck
-    skype
     evernote
-    slack
+    vagrant
+    virtualbox
 
-    # kodi # the new PopcornTime
-    # telegram
-    # sequel-pro
-    # scribus # open-source Adobe InDesign
-    # protege # ontology editor
-    # graphviz    # dot-graphs (linken aan protege via `which dot`)
+    # vlcstreamer
+    # slack         # dev communications
+    # skype         # shit program
+    # kodi          # the new PopcornTime
+    # telegram      # why?
+    # sequel-pro    # mac SQL
+    # scribus       # open-source Adobe InDesign
+    # protege       # ontology editor
+    # graphviz      # dot-graphs (linken aan protege via `which dot`)
     )
 
     for tap in ${cask_taps[@]}; do
@@ -112,14 +114,11 @@ function install_node() {
     brew install node
 
     declare -a packages=(
-    gulp        # javascript task runner
+    gulp-cli    # javascript task runner
+    grunt-cli   # javascript task runner
     jshint      # needed for jshint.vim
     nodemon     # automatisch herstarten van nodejs servers
-
-    # karma       # javascript testing suite
-    # bower       # web package manager
-    # grunt       # javascript task manager
-    # grunt-cli   # grunt command line interface
+    bower
     )
 
     for package in ${packages[@]}; do
@@ -165,6 +164,10 @@ cp -r "~/dotfiles/Open in iTerm.workflow" "~/Library/Services/"
 #curl https://bugs.wireshark.org/bugzilla/attachment.cgi?id=3373 -o ChmodBPF.tar.gz
 #tar zxvf ChmodBPF.tar.gz
 #open ChmodBPF/Install\ ChmodBPF.app
+
+# BITLOCKER ON OS X
+# brew cask install osxfuse
+# install dislocker via https://github.com/Aorimn/dislocker
 
 # SAFARI
 # addblock
