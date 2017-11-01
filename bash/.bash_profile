@@ -31,7 +31,7 @@ fi)'
 # 2}}} #
 # 1}}} #
 # Export variables {{{1 #
-export EDITOR='/usr/local/Cellar/vim/7.4.2235/bin/vim'
+export EDITOR='/usr/local/bin/vim'
 export PATH="$HOME/bin:/usr/local/bin:$PATH"
 
 # iTerm colors {{{1 #
@@ -90,16 +90,6 @@ algo1="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 Algo
 algo2="$HOME/Documents/MAARTEN/Archief/2014-2015 UGent Master/UGent Master/1 Algoritmen II/"
 algo="$algo2"
 
-php="/Applications/MAMP/bin/php/php5.6.10/bin/php"
-
-mule="/Users/mvdssel/Dropbox/Deloitte/MuleSoft/MUFundamentals3.8_studentFiles_16aug2016"
-
-m="$HOME/Sites/jobertus/m"
-cup="$HOME/Sites/jobertus/cup"
-vop="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 VOP/vop-2014-team07/VOP-server/src/main/webapp/javascript/home"
-backend="$HOME/Sites/Mediaraven/wg_inscheck_systeem_scherm/backend"
-frontend="$HOME/Sites/Mediaraven/wg_inscheck_systeem_scherm/frontend"
-
 snippets="$HOME/.vim/bundle/vim-snippets/snippets"
 
 # TeX {{{1
@@ -118,3 +108,7 @@ pdf() {
     open *.pdf
 }
 # 1}}} -
+
+test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+source ~/.iterm2_shell_integration.`basename $SHELL`

@@ -5,7 +5,7 @@ set -o xtrace   # Log all executed commands
 
 function init() {
     # disable dashboard
-    defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
+    # defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
 
     # enable quicklook selection
     defaults write com.apple.finder QLEnableTextSelection -bool TRUE;killall Finder
@@ -21,14 +21,16 @@ function init() {
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
     # Brew necessities
-    $(xcode-select --install)
-    clang
+    # $(xcode-select --install)
+    # clang
 
     # Installeren Brew
     # - Warnings bij brew doctor kunnen genegeerd worden
     # - Bij problemen: brew uninstall --force <tap> && brew install --force <tap>
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     brew update
+    brew upgrade
+    brew doctor
 }
 
 function install_taps() {
@@ -44,8 +46,8 @@ function install_taps() {
     gpg     # enctyption
     ffmpeg  # epic audio shit
 
-    hg      # bitbucket
-    maven   # java dependency manager
+    # hg      # bitbucket
+    # maven   # java dependency manager
     )
 
     for tap in ${taps[@]}; do
@@ -55,19 +57,18 @@ function install_taps() {
 
 function install_cask_taps() {
     declare -a cask_taps=(
-    firefox
+    # firefox
     iterm2
     dropbox
-    get-lyrical
+    # get-lyrical
     vlc
     spotify
     audacity
-    mamp
+    # mamp
     transmission
-    cyberduck
-    evernote
-    vagrant
-    virtualbox
+    # cyberduck
+    # vagrant
+    # virtualbox
 
     # vlcstreamer
     # slack         # dev communications
@@ -114,10 +115,10 @@ function install_node() {
     brew install node
 
     declare -a packages=(
-    gulp-cli    # javascript task runner
-    grunt-cli   # javascript task runner
+    # gulp-cli    # javascript task runner
+    # grunt-cli   # javascript task runner
     jshint      # needed for jshint.vim
-    nodemon     # automatisch herstarten van nodejs servers
+    # nodemon     # automatisch herstarten van nodejs servers
     bower
     )
 
