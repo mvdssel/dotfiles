@@ -1,9 +1,20 @@
 BASH Cheatsheet
 ===============
 
-
 !! # laatste commando
 !$ # laatste argument
+
+unix & file permissions
+-----------------------
+
+    sudo chmod -N file              # Remove ACLs from file
+    sudo chmod ugo+rw file          # Give everyone read-write permission to file
+    sudo chflags nouchg file        # Clear the user immutable flag from file
+    sudo chflags norestricted file  # Remove the SIP protection from file
+
+    sudo spctl --master-disable     # Allow apps to be opened from everywhere
+
+    sudo csrutil disable            # Disable System Integrety Protection
 
 ssh & screen
 ------------
