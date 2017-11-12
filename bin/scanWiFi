@@ -1,0 +1,5 @@
+#!/bin/bash
+
+airport -s |            # scan for wifi networks
+    tail -n +2 |        # everything except the first line
+    sort -h -k3 -r      # reverse human sorting on third field

@@ -28,9 +28,9 @@ read inputExt
 echo -e -n "Provide the 'to' extension:\n> "
 read outputExt
 
-echo -e "Will rename all files named '*${Warning}.${inputExt}${Reset}' to '*${Warning}.${outputExt}${Reset}'"
+echo -e "Will rename all files named '*${Warning}${inputExt}${Reset}' to '*${Warning}${outputExt}${Reset}'"
 pause 'Continue? (press <CTRL-C> to exit)'
 
-for file in $(find . -name "*.$inputExt" $depth); do
-    printexec mv "$file" $(echo "$file"|sed -E "s/^(.*)\.${inputExt}$/\1\.${outputExt}/g")
+for file in $(find . -name "*$inputExt" $depth); do
+    printexec mv "$file" $(echo "$file"|sed -E "s/^(.*)${inputExt}$/\1${outputExt}/g")
 done
