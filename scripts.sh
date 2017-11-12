@@ -10,6 +10,9 @@ function init() {
     # enable quicklook selection
     defaults write com.apple.finder QLEnableTextSelection -bool TRUE;killall Finder
 
+    # add airport as cmd line utility
+    sudo ln -s /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport /usr/local/bin/airport
+
     # remove "last login" message from terminal
     touch ~/.hushlogin                  
 
