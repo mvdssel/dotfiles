@@ -38,8 +38,10 @@ function init() {
 
 function install_taps() {
     declare -a taps=(
-    vim     # nodig voor ycm
-    cmake   # nodig voor ycm
+    openssl # code sign / ssl-key-gen / ...
+    python --with-brewed-openssl # no python problems?
+    vim     # nodig voor ycm (after python!)
+    cmake   # nodig voor ycm (after python!)
     tree    # ls art
     toilet  # ascii art
     wget    # curl companion
@@ -72,6 +74,7 @@ function install_cask_taps() {
     # cyberduck
     # vagrant
     # virtualbox
+    google-earth-pro
 
     # vlcstreamer
     # slack         # dev communications

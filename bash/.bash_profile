@@ -14,20 +14,22 @@ Jobs="\j"
 
 # Prompt {{{2
 alias GitBranch="git branch | egrep '^\*'| sed 's|\*[[:space:]]\([^[[:space:]]]*\)[[:space:]]*|\1|'"
-export PS1="\[$Purple\]"'$(if [ -f ~/bin/prompt ]; then ~/bin/prompt; fi)$(git branch &>/dev/null;\
-if [ $? -eq 0 ]; then \
-    echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
-    if [ "$?" -eq "0" ]; then \
-        # @4 - Clean repository - nothing to commit
-        echo "\['$White'\] (\['$Green'\]"$(GitBranch)"\['$White'\])";\
-    else \
-        # @5 - Changes to working tree
-        echo "\['$White'\] (\['$Orange'\]"$(GitBranch)"\['$White'\])";\
-    fi) \['$Blue'\]\$ \['$Reset'\]"; \
-else \
-    # @2 - Prompt when not in GIT repo
-    echo "\['$Blue'\] \$ \['$Reset'\]"; \
-fi)'
+# BROKEN SINCE ZSH
+# export PS1="\[$Purple\]"'$(if [ -f ~/bin/prompt ]; then ~/bin/prompt; fi)$(git branch &>/dev/null;\
+# if [ $? -eq 0 ]; then \
+#     echo "$(echo `git status` | grep "nothing to commit" > /dev/null 2>&1; \
+#     if [ "$?" -eq "0" ]; then \
+#         # @4 - Clean repository - nothing to commit
+#         echo "\['$White'\] (\['$Green'\]"$(GitBranch)"\['$White'\])";\
+#     else \
+#         # @5 - Changes to working tree
+#         echo "\['$White'\] (\['$Orange'\]"$(GitBranch)"\['$White'\])";\
+#     fi) \['$Blue'\]\$ \['$Reset'\]"; \
+# else \
+#     # @2 - Prompt when not in GIT repo
+#     echo "\['$Blue'\] \$ \['$Reset'\]"; \
+# fi)'
+
 # 2}}} #
 # 1}}} #
 # Export variables {{{1 #
@@ -86,10 +88,6 @@ ll() {
 # 1}}} #
 cl
 
-algo1="$HOME/Documents/MAARTEN/Archief/2013-2014 UGent 3de/UGent 3de Bach/2 Algoritmen I"
-algo2="$HOME/Documents/MAARTEN/Archief/2014-2015 UGent Master/UGent Master/1 Algoritmen II/"
-algo="$algo2"
-
 snippets="$HOME/.vim/bundle/vim-snippets/snippets"
 
 # TeX {{{1
@@ -108,7 +106,3 @@ pdf() {
     open *.pdf
 }
 # 1}}} -
-
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
-
-source ~/.iterm2_shell_integration.`basename $SHELL`
